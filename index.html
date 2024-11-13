@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacalku Masih Ngambek?</title>
+    <style>
+        /* Pengaturan tampilan umum */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+
+        /* Tampilan layar pertama */
+        .image {
+            width: 200px;
+            height: 200px;
+            background-image: url('https://storage.googleapis.com/a1aa/image/FeuCBi3eEciPuEyYweMSUmTH33ulBBjmOyCgLKFAC19l7EhnA.jpg');
+            background-size: cover;
+            margin-bottom: 20px;
+        }
+        .text {
+            font-size: 24px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .button {
+            background-color: #ff6b6b;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .button:hover {
+            background-color: #ff4b4b;
+        }
+
+        /* Tampilan animasi loading */
+        .loading {
+            display: none;
+            font-size: 80px;
+            color: #ff6b6b;
+            animation: heart-animation 2s forwards ease-in-out;
+        }
+        @keyframes heart-animation {
+            0% { transform: scale(0.2); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Tampilan layar kedua */
+        .second-screen {
+            display: none;
+            text-align: center;
+        }
+        .second-screen img {
+            width: 150px;
+            height: auto;
+        }
+        .second-screen p {
+            font-size: 20px;
+            color: #000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Layar Pertama -->
+    <div class="container" id="firstScreen">
+        <div class="image"></div>
+        <div class="text">pacalku masih ngambek?</div>
+        <div class="buttons">
+            <button class="button" onclick="showLoading()">udah enggaa</button>
+            <button class="button" id="masihButton" onmouseover="moveButton()">masih!</button>
+        </div>
+    </div>
+
+    <!-- Layar Loading dengan Animasi Hati -->
+    <div class="loading" id="loadingScreen">❤</div>
+
+    <!-- Layar Kedua -->
+    <div class="second-screen" id="secondScreen">
+        <img src="https://storage.googleapis.com/a1aa/image/v9Yz7NTQM9ZfH6V0YylIl3WaJ0JPPasa3IojNrUslMfveEhnA.jpg" alt="Stiker beruang lucu dengan pacarnya">
+        <p>hihi love u pacall</p>
+    </div>
+
+    <script>
+        // Fungsi untuk memindahkan tombol 'masih!' ke posisi acak saat didekati oleh kursor
+        function moveButton() {
+            const button = document.getElementById('masihButton');
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 200 - 100;
+            button.style.position = 'relative';
+            button.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        // Fungsi untuk menampilkan animasi loading sebelum beralih ke layar kedua
+        function showLoading() {
+            // Sembunyikan layar pertama
+            document.getElementById('firstScreen').style.display = 'none';
+            
+            // Tampilkan layar loading dengan animasi hati
+            const loading = document.getElementById('loadingScreen');
+            loading.style.display = 'block';
+            
+            // Setelah animasi selesai (2 detik), tampilkan layar kedua
+            setTimeout(() => {
+                loading.style.display = 'none';
+                document.getElementById('secondScreen').style.display = 'block';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
